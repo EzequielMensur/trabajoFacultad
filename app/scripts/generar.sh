@@ -6,7 +6,7 @@ function generar_imagenes() {
     for ((i=0; i<cantidad_imagenes ; i++))
     do
         url="https://source.unsplash.com/random/900%C3%97700/?person"
-        carpeta_destino="../download"
+        carpeta_destino="../download/imagenes"
         nombre_archivo="imagen$i.jpg"
         
         curl -o "$carpeta_destino/$nombre_archivo" "$url"
@@ -15,12 +15,12 @@ function generar_imagenes() {
 
 function descargar_nombres() {
     local url="https://raw.githubusercontent.com/fernandezpablo85/name_suggestions/master/assets/dict.csv"
-    local archivo_salida="nombres.txt"
+    local archivo_salida="../download/nombre/nombres.txt"
     curl -s "$url" | awk -F ',' '{names = names $1 ","} END {sub(/,$/, "", names); print names}' > "$archivo_salida"
 }
 
 function cargar_nombres_memoria() {
-    local archivo_entrada="nombres.txt"
+    local archivo_entrada="../download/nombre/nombres.txt"
     local nombres_array=()
     
     while IFS= read -r linea; do
@@ -37,9 +37,12 @@ function generar_nombre_aleatorio() {
     local cantidad_nombres=${#nombres_array[@]}
     local indice_aleatorio=$((RANDOM % cantidad_nombres))
     local nombre_aleatorio=${nombres_array[$indice_aleatorio]}
-    nombre_aleatorio=${nombre_aleatorio//,/}  # Reemplazar la coma por un guion bajo
+    nombre_aleatorio=${nombre_aleatorio//,/}
     echo "$nombre_aleatorio"
 }
+
+
+#testing
 
 function nombre(){
 
@@ -47,3 +50,4 @@ function nombre(){
     generar_nombre_aleatorio "${nombres[@]}"
 
 }
+
