@@ -37,7 +37,7 @@ function generar_nombre_aleatorio() {
     local cantidad_nombres=${#nombres_array[@]}
     local indice_aleatorio=$((RANDOM % cantidad_nombres))
     local nombre_aleatorio=${nombres_array[$indice_aleatorio]}
-    nombre_aleatorio=${nombre_aleatorio//,/}
+    nombre_aleatorio=${nombre_aleatorio//,/_}
     echo "$nombre_aleatorio"
 }
 

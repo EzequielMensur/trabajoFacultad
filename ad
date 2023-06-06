@@ -1,0 +1,59 @@
+[33mcommit d9330b0e4a066a687ce0b3c2921eb14733cd2840[m[33m ([m[1;36mHEAD -> [m[1;32mgenerar[m[33m)[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Tue Jun 6 13:58:59 2023 -0300
+
+    Fix(rutas): Se añadio archivo gitignore
+
+[33mcommit 07d8a297f45e44176311774dcb3cf7e489aaba56[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Tue Jun 6 13:44:49 2023 -0300
+
+    Add(gitignore): Se añadio archivo gitignore
+
+[33mcommit 2b4064dc68dc7484da4dcf8d3e27aaf4db558709[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Tue Jun 6 13:41:45 2023 -0300
+
+    Add(generar): funciones para generar imagenes y nombres con un servicio
+
+[33mcommit 63677076578cbbb01c8ffd507e88517148c8dee8[m[33m ([m[1;32mmenu[m[33m, [m[1;32mmain[m[33m)[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Tue Jun 6 10:16:22 2023 -0300
+
+    Fix(menu): correccion de interfaz
+
+[33mcommit 38842ce9ec825c52c28c5b9bbd8ebe33bb53a01d[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Mon Jun 5 23:38:38 2023 -0300
+
+    Fix(rutas): se corrigio las rutas por cambios de nombres de los archivos
+
+[33mcommit 6cf78847fcf5bddabb0388c6c8e005089a230ffd[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Mon Jun 5 23:35:52 2023 -0300
+
+    Chore(names): se le cambio nombres a los archivos principales
+
+[33mcommit 53d9bfe8a617b95e64b7d79bcb4d5f8767a12900[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Mon Jun 5 23:27:56 2023 -0300
+
+    Add(menues): se le agrego menues faltantes
+
+[33mcommit 97de9359be821948e3fc6cdc70826a5c7d516507[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Mon Jun 5 19:53:50 2023 -0300
+
+    Add(validaciones): se añadio archivo de validaciones
+
+[33mcommit fb22ef162c5f57faa9fad15307782e0e298b38b8[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Mon Jun 5 19:21:08 2023 -0300
+
+    Add(menu principal): se añadio el menu de opciones pŕincipal
+
+[33mcommit 76a315c459de6a1e2d92b5854b5601bf09694e61[m[33m ([m[1;32mprocesar[m[33m, [m[1;32mdescargar[m[33m, [m[1;32mcontenedor[m[33m, [m[1;32mcomprimir[m[33m)[m
+Author: Ezequiel Mensur <eze-mensur@hotmail.es>
+Date:   Mon Jun 5 18:14:44 2023 -0300
+
+    [200~chore(project): Crear estructura inicial del proyecto
