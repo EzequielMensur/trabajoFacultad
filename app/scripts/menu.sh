@@ -8,10 +8,10 @@ show_menu() {
     select opt in "${options[@]}"; do
         case $opt in
             "Seleccionar imágenes")
-                source generar.sh 
+                source menu_seleccion.sh 
                 ;;
             "Procesar imágenes")
-                source procesar.sh
+                source menu_procesar.sh
                 ;;
             "Salir")
                 echo "Saliendo del programa..."
