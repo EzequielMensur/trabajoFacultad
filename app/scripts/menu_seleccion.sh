@@ -1,9 +1,11 @@
 #!/bin/bash
 
 source ../utils/validaciones.sh
+source ./generar.sh
+source ./descargar.sh
 
 show_menu() {
-    clear
+
     PS3="Selecciona una opción: "
     options=("Descargar imagenes" "Generar Imagenes" "Volver para atras" "Salir")
 
@@ -18,10 +20,13 @@ show_menu() {
 		else
     		    echo "El valor ingresado no es válido. Por favor, ingresa un número."
 		fi
+
+		source menu_seleccion.sh
                 ;;
             "Generar Imagenes")
                 echo "Has seleccionado la opción 2. Procesar imágenes"
-                # Agrega aquí el código para la opción 2
+
+                source menu_seleccion.sh
                 ;;
             "Volver para atras")
 		source menu.sh

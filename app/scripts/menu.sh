@@ -29,6 +29,7 @@ show_menu() {
 main() {
     while true; do
         show_menu
+	read -p "Preciona enter para continuar"
     done
 }
 
