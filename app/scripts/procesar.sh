@@ -1,7 +1,11 @@
-
 #!/bin/bash
+source ../utils/validaciones.sh
 
-function redimendionar_imagen(){
+#necesita instalar sudo apt-get install html2ps y modificar las politicas de seguridad <policymap>
+#  <policy domain="coder" rights="read|write" pattern="PS" />
+#</policymap>
+ 
+function redimencionar_imagen(){
 
      local imagen=$1
      local altura=$2
@@ -10,8 +14,12 @@ function redimendionar_imagen(){
      local nombre_imagen=$(basename "$imagen")
      local imagen_transformada="${carpeta_destino}/${nombre_imagen}"
 
-     convert "$imagen" -resize "${altura}x${longitud}" "$imagen_redimensionada"
+     if es_persona "$nombre_imagen"; then
+	  convert "$imagen" -gravity center -resize ${altura}x${longitud}+0+0 -extent ${altura}x${longitud} "$imagen_transformada"
+	  echo "se ha transformado correctamente: $nombre_imagen"
+     fi
 
 }
 
-
+#testing
+redimencionar_imagen "./../download/imagenes/Ezequiel_Mensur.jpg" 500 500
