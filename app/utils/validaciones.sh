@@ -35,3 +35,14 @@ function es_persona() {
     return 1 
   fi
 }
+
+function verificar_archivo() {
+    local archivo="$1"
+
+    if [ -f "$archivo" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+

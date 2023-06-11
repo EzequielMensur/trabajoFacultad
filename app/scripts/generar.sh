@@ -3,11 +3,12 @@
 function generar_imagenes() {
     # Acceder al primer argumento con $1
     local cantidad_imagenes="$1"
+    local nombre="$2"
     for ((i=0; i<cantidad_imagenes ; i++))
     do
         url="https://source.unsplash.com/random/900%C3%97700/?person"
         carpeta_destino="../download/imagenes"
-        nombre_archivo="imagen$i.jpg"
+        nombre_archivo="$nombre.jpg"
         
         curl -o "$carpeta_destino/$nombre_archivo" "$url"
     done

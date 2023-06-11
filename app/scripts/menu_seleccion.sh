@@ -11,20 +11,19 @@ show_menu() {
 
     select opt in "${options[@]}"; do
         case $opt in
-            "Descargar imagenes")
+            "Generar imagenes")
                 read -p "Cantidad de imagenes a generar: " valor
                 echo $valor
 		if is_number $valor; then
     		    echo "El valor ingresado es válido: $valor"
-			
 		else
     		    echo "El valor ingresado no es válido. Por favor, ingresa un número."
 		fi
 
 		source menu_seleccion.sh
                 ;;
-            "Generar Imagenes")
-                echo "Has seleccionado la opción 2. Procesar imágenes"
+            "Descargar Imagenes")
+                echo "Has seleccionado la opción 1. Descargar imágenes"
 
                 source menu_seleccion.sh
                 ;;
