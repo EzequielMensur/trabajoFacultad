@@ -13,6 +13,7 @@ function redimencionar_imagen(){
      local carpeta_destino="../imagenes_procesadas"
      local nombre_imagen=$(basename "$imagen")
      local imagen_transformada="${carpeta_destino}/${nombre_imagen}"
+     echo "$nombre_imagen"
 
      if es_persona "$nombre_imagen"; then
 	  convert "$imagen" -gravity center -resize ${altura}x${longitud}+0+0 -extent ${altura}x${longitud} "$imagen_transformada"
@@ -21,5 +22,16 @@ function redimencionar_imagen(){
 
 }
 
+function procesar_imagenes(){
+
+     carpeta="./../download/imagenes/"
+
+    for archivo in $(find "$carpeta" -type f); do
+	 echo "$archivo"
+         redimencionar_imagen $archivo 512 512	
+    done
+}
+
 #testing
-redimencionar_imagen "./../download/imagenes/Ezequiel_Mensur.jpg" 500 500
+#redimencionar_imagen "./../download/imagenes/Ezequiel_Mensur.jpg" 500 500
+

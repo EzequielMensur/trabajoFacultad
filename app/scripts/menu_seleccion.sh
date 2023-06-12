@@ -15,13 +15,12 @@ show_menu() {
                 read -p "Cantidad de imagenes a generar: " valor
                 echo $valor
 		if is_number $valor; then
-    		    echo "El valor ingresado es válido: $valor"
+    		    echo "Generando imagenes ..."
 	            generar_imagenes $valor
-		    
 		else
     		    echo "El valor ingresado no es válido. Por favor, ingresa un número."
 		fi
-
+		echo "Generacion finalizada"
 		source menu_seleccion.sh
                 ;;
             "Descargar Imagenes")
