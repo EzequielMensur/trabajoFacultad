@@ -8,64 +8,55 @@ source ./comprimir.sh
 ancho=512
 alto=512
 
-show_menu() {
-    clear
-    PS3="Selecciona una opción: "
-    options=("Seleccionar dimensiones" "Procesar Imagenes" "Volver para atras" "Salir")
-    parametros=()
+mostrar_menu() {
+    opcion=$(whiptail --title "Menú" --menu "Elige una opción:" 15 60 4 \
+        "1" "Seleccionar dimensiones" \
+        "2" "Procesar Imagenes" \
+        "3" "Volver para atrás" \
+        "4" "Salir" 3>&1 1>&2 2>&3)
 
-    select opt in "${options[@]}"; do
-        case $opt in
-            "Seleccionar dimensiones")
-		read -p "Ancho (Presiona Enter para usar el valor predeterminado 512): " ancho
-    		read -p "Alto (Presiona Enter para usar el valor predeterminado 512): " alto
+    case $opcion in
+        1)
+            ancho=$(whiptail --inputbox "Ancho (Presiona Enter para usar el valor predeterminado 512):" 8 60 512 --title "Seleccionar dimensiones" --ok-button "Aceptar" --cancel-button "Cancelar" 3>&1 1>&2 2>&3)
+            alto=$(whiptail --inputbox "Alto (Presiona Enter para usar el valor predeterminado 512):" 8 60 512 --title "Seleccionar dimensiones" --ok-button "Aceptar" --cancel-button "Cancelar" 3>&1 1>&2 2>&3)
 
-    		# Asignar valores predeterminados si el usuario presiona Enter
-    		if [[ -z "$ancho" ]]; then
-   		     ancho=512
-    		fi
+            # Asignar valores predeterminados si el usuario presiona Enter
+            if [[ -z "$ancho" ]]; then
+                ancho=512
+            fi
 
-    		if [[ -z "$alto" ]]; then
-        	     alto=512
-    		fi
+            if [[ -z "$alto" ]]; then
+                alto=512
+            fi
 
-                if dimension_permitida $ancho && dimension_permitida $alto ; then
-                    echo "El valor ingresado es: $ancho y $alto"
-
-                else
-                    echo "Valores no permitidos. Deben ser mayores que cero."
-                fi
-		source menu_procesar.sh
-                ;;
-            "Procesar Imagenes")
-                echo "Inicio del procesamiento de las imagenes ..."
-                procesar_imagenes
-		echo "Inicio de generacion de lista.."
-                obtener_nombres_sin_extension "./../imagenes_procesadas/" "./../../edit"
-		echo "Inicio de generacion de compresion de imagenes"
-		comprimir_imagenes "./../imagenes_procesadas/" "./../../edit"
-
-		#source menu_procesar.sh
-                ;;
-            "Volver para atras")
-                source menu.sh
-                ;;
-            "Salir")
-                echo "Saliendo del programa..."
-                exit
-                ;;
-            *)
-                echo "Opción inválida. Por favor, selecciona un número del menú."
-                ;;
-       esac
-    done
+            if dimension_permitida $ancho && dimension_permitida $alto ; then
+                whiptail --msgbox --title "Valores ingresados" --infobox "El valor ingresado es: $ancho y $alto" 8 60
+            else
+                whiptail --msgbox --title "Valores no permitidos" --infobox "Valores no permitidos. Deben ser mayores que cero." 8 60
+            fi
+            source menu_procesar.sh
+            ;;
+        2)
+           procesar_imagenes
+           obtener_nombres_sin_extension "./../imagenes_procesadas/" "./../../edit"
+           comprimir_imagenes "./../imagenes_procesadas/" "./../../edit"
+           whiptail --title "Operacion finalizada" --msgbox "Operacion finalizada con exito" 8 60
+           source menu_procesar.sh
+           ;;
+        3)
+            source menu.sh
+            ;;
+        *)
+            whiptail --title "Salir" --msgbox "Saliendo del programa..." 8 60
+            exit
+            ;;
+    esac
 }
 
 # Lógica de la opción X
 main() {
     while true; do
-        show_menu
-        read -p "Preciona enter para continuar ..."
+        mostrar_menu
     done
 }
 

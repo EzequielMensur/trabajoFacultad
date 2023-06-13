@@ -1,35 +1,31 @@
 #!/bin/bash
+clear
 
-show_menu() {
-    clear
-    PS3="Selecciona una opción: "
-    options=("Seleccionar imágenes" "Procesar imágenes" "Salir")
+mostrar_menu() {
+    opcion=$(whiptail --nocancel --title "Menú" --menu "Elige una opción:" 15 60 4 \
+        "1" "Seleccionar imágenes" \
+        "2" "Procesar imágenes" \
+        "3" "Salir" 3>&1 1>&2 2>&3)
 
-    select opt in "${options[@]}"; do
-        case $opt in
-            "Seleccionar imágenes")
-                source menu_seleccion.sh 
-                ;;
-            "Procesar imágenes")
-                source menu_procesar.sh
-                ;;
-            "Salir")
-                echo "Saliendo del programa..."
-                exit
-                ;;
-            *) 
-                echo "Opción inválida. Por favor, selecciona un número del menú."
-                ;;
-        esac
-    done
+    case $opcion in
+        1)
+            source menu_seleccion.sh
+            ;;
+        2)
+            source menu_procesar.sh
+            ;;
+
+        *)
+            whiptail --title "Salir del programa" --msgbox "Saliendo del programa..." 10 60
+            exit 1
+            ;;
+    esac
 }
- 
 
 # Función principal del programa
 main() {
     while true; do
-        show_menu
-	read -p "Preciona enter para continuar"
+        mostrar_menu
     done
 }
 

@@ -13,7 +13,6 @@ function generar_imagenes() {
 
         # Verificar si el archivo ya existe
         if [[ -e "$ruta_archivo" ]]; then
-            echo "El archivo $nombre_archivo ya existe. Generando nuevo nombre..."
             nombre_imagen=$(generar_nombre_aleatorio "${nombres[@]}")
             nombre_archivo="$nombre_imagen.jpg"
             ruta_archivo="$carpeta_destino/$nombre_archivo"
@@ -53,6 +52,5 @@ function generar_nombre_aleatorio() {
     primer_mayuscula=$(echo "$primer_nombre" | sed 's/\b\(.\)/\u\1/g')
     segundo_mayuscula=$(echo "$segundo_nombre" | sed 's/\b\(.\)/\u\1/g')
     nombre_aleatorio="${primer_mayuscula}_${segundo_mayuscula}"
-    echo "$nombre_aleatorio"
 }
 

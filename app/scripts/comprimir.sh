@@ -22,10 +22,8 @@ function obtener_nombres_sin_extension() {
     done
 
     echo "Nombres sin extensión: ${nombres[@]}" > "$carpeta_salida/nombres.txt"
-
     echo "Total de nombres masculinos: $contador_masculino" >> "$carpeta_salida/nombres.txt"
     echo "Total de nombres femeninos: $contador_femenino" >> "$carpeta_salida/nombres.txt"
-
 }
 
 function es_mujer() {
@@ -33,9 +31,9 @@ function es_mujer() {
 
     local ultimo_caracter=${nombre: -1}
     if [[ $ultimo_caracter =~ [aA] ]]; then
-       return 0
+        return 0
     else
-       return 1
+        return 1
     fi
 }
 
@@ -47,6 +45,6 @@ function comprimir_imagenes() {
 }
 
 # testing
-obtener_nombres_sin_extension "./../imagenes_procesadas/" "./../../edit"
-comprimir_imagenes "./../imagenes_procesadas/" "./../../edit"
-tar -tzvf ./../../edit/imagenes.tar.gz
+#obtener_nombres_sin_extension "./../imagenes_procesadas/" "./../../edit"
+#comprimir_imagenes "./../imagenes_procesadas/" "./../../edit"
+#tar -tzvf ./../../edit/imagenes.tar.gz
