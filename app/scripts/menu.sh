@@ -1,5 +1,5 @@
 #!/bin/bash
-clear
+source "./estado_inicial.sh"
 
 mostrar_menu() {
     opcion=$(whiptail --nocancel --title "Menú" --menu "Elige una opción:" 15 60 4 \
@@ -24,6 +24,8 @@ mostrar_menu() {
 
 # Función principal del programa
 main() {
+
+    verificar_archivo_nombres
     while true; do
         mostrar_menu
     done

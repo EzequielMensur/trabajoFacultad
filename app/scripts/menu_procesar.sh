@@ -1,8 +1,9 @@
 #!/bin/bash
-
+z
 source ../utils/validaciones.sh
 source ./procesar.sh
 source ./comprimir.sh
+source ./estado_inicial.sh
 
 # Variables globales para ancho y alto
 ancho=512
@@ -37,7 +38,9 @@ mostrar_menu() {
             source menu_procesar.sh
             ;;
         2)
+           eliminar_archivos_carpeta "./../imagenes_procesadas/"
            procesar_imagenes
+
            obtener_nombres_sin_extension "./../imagenes_procesadas/" "./../../edit"
            comprimir_imagenes "./../imagenes_procesadas/" "./../../edit"
            whiptail --title "Operacion finalizada" --msgbox "Operacion finalizada con exito" 8 60

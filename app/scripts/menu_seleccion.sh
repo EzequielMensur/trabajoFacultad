@@ -3,6 +3,7 @@
 source ../utils/validaciones.sh
 source ./generar.sh
 source ./descargar.sh
+source ./estado_inicial.sh
 
 mostrar_menu() {
 
@@ -19,10 +20,11 @@ mostrar_menu() {
         2)
             valor=$(whiptail --inputbox "Cantidad de imágenes a generar:" 10 60 3>&1 1>&2 2>&3)
             if is_number $valor; then
+                eliminar_archivos_carpeta "./../download/imagenes"
                 generar_imagenes $valor
                 whiptail --title "Generacion finalizada" --msgbox "Se han generado las imagenes correctamente" 10 60
             else
-                whiptail --title "Valor inválido" --msgbox "El valor ingresado no es válido. Por favor, ingresa un número." 10 60
+                whiptail --title "Generacion no finalizada" --msgbox "No se ha podido completar la operacion" 10 60
             fi
             source menu_seleccion.sh
             ;;

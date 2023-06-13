@@ -52,5 +52,6 @@ function generar_nombre_aleatorio() {
     primer_mayuscula=$(echo "$primer_nombre" | sed 's/\b\(.\)/\u\1/g')
     segundo_mayuscula=$(echo "$segundo_nombre" | sed 's/\b\(.\)/\u\1/g')
     nombre_aleatorio="${primer_mayuscula}_${segundo_mayuscula}"
+    echo "$nombre_aleatorio"
 }
 
