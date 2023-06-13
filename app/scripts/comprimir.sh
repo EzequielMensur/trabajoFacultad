@@ -6,6 +6,8 @@ function obtener_nombres_sin_extension() {
     local nombres=()
     local contador_masculino=0
     local contador_femenino=0
+    local fecha_actual=$(date)
+    local fecha_sin_espacios=$(echo "$fecha_actual" | sed 's/ /_/g')
 
     for archivo in "$carpeta"/*; do
         if [[ -f "$archivo" ]]; then
@@ -21,9 +23,9 @@ function obtener_nombres_sin_extension() {
         fi
     done
 
-    echo "Nombres sin extensión: ${nombres[@]}" > "$carpeta_salida/nombres.txt"
-    echo "Total de nombres masculinos: $contador_masculino" >> "$carpeta_salida/nombres.txt"
-    echo "Total de nombres femeninos: $contador_femenino" >> "$carpeta_salida/nombres.txt"
+    echo "Nombres: ${nombres[@]}" > "$carpeta_salida/nombres_$fecha_sin_espacios.txt"
+    echo "Total de nombres masculinos: $contador_masculino" >> "$carpeta_salida/nombres_$fecha_sin_espacios.txt"
+    echo "Total de nombres femeninos: $contador_femenino" >> "$carpeta_salida/nombres_$fecha_sin_espacios.txt"
 }
 
 function es_mujer() {
@@ -40,8 +42,10 @@ function es_mujer() {
 function comprimir_imagenes() {
     local carpeta="$1"
     local carpeta_salida="$2"
+    local fecha_actual=$(date)
+    local fecha_sin_espacios=$(echo "$fecha_actual" | sed 's/ /_/g')
 
-    tar -czvf "$carpeta_salida/imagenes.tar.gz" -C "$carpeta" .
+    tar -czvf "$carpeta_salida/imagenes_$fecha_sin_espacios.tar.gz" -C "$carpeta" .
 }
 
 # testing

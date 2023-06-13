@@ -1,5 +1,4 @@
 #!/bin/bash
-z
 source ../utils/validaciones.sh
 source ./procesar.sh
 source ./comprimir.sh
