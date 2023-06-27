@@ -3,30 +3,25 @@
 
 function descargar_imagenes(){
 
-    archivo_imagenes=$1
-    archivo_suma_verificacion=$2
-    carpeta_destino="../download/imagenes/"
-
-    echo "Descargando archivo: $archivo_imagenes..."
-    wget "$archivo_imagenes" -P "$carpeta_destino"
-
-    suma_verificacion_actual = $(calcular_checksum $)
-
-}
-
-function validad_descarga(){
-
-    if [ $? -ne 0 ]; then
- 	echo "Error al descargar el archivo: $archivo_imagenes"
-        exit 1
+    if [ $# -ne 2 ]; then
+       echo "Uso: $0 <URL_imagenes> <URL_suma_verificacion>"
+       exit 1
     fi
-}
 
-function calcular_checksum(){
-    ruta_archivo_imagenes = "$1"
+    carpeta_destino="../download/imagenes"
+    url_imagenes=$1
+    url_suma_verificacion=$2
+    archivo_imagenes="imagenes.zip"
 
-    suma_verificacion_actual=$(md5sum "$ruta_archivo_imagenes" | awk '{print $1}')
-    echo "$suma_verificacion_actual"
+    curl -o "$carpeta_destino/$archivo_imagenes" "$url"
 
+    suma_verificacion_descargada=$(curl --silent "$url_suma_verificacion")
+    suma_verificacion_calculada=$(sha256sum "$carpeta_destino/$archivo_imagenes" | awk '{print $1}')
+
+    if [ "$suma_verificacion_descargada" == "$suma_verificacion_calculada" ]; then
+	return 0
+    else
+	return 1
+    fi
 }
 
