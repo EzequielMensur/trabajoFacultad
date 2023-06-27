@@ -25,3 +25,13 @@ function descargar_imagenes(){
     fi
 }
 
+function descomprimir_archivo() {
+    carpeta_destino="../download/imagenes"
+    archivo_imagenes="imagenes.zip"
+    rutaInicial="$carpeta_destino/$archivo_imagenes"
+    rutaFinal="../download/imagenes"
+
+    unzip "$rutaInicial" -d "$rutaFinal"
+
+}
+                                
