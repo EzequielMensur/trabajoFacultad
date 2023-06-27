@@ -8,7 +8,7 @@ function descargar_imagenes(){
        exit 1
     fi
 
-    carpeta_destino="../download/imagenes"
+    carpeta_destino="../download/archivos"
     url_imagenes="$1"
     url_suma_verificacion="$2"
     archivo_imagenes="imagenes.zip"
@@ -32,8 +32,9 @@ function descargar_imagenes(){
 
 function descomprimir_archivo() {
     carpeta_destino="../download/imagenes"
+    carpeta_origen="../download/archivos"
     archivo_imagenes="imagenes.zip"
-    rutaInicial="$carpeta_destino/$archivo_imagenes"
+    rutaInicial="$carpeta_origen/$archivo_imagenes"
     rutaFinal="../download/imagenes"
 
     unzip "$rutaInicial" -d "$rutaFinal"
