@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 source ../utils/validaciones.sh
 source ./generar.sh
@@ -15,8 +15,17 @@ mostrar_menu() {
 
     case $opcion in
         1)
-            source menu_seleccion.sh
-            ;;
+	    urlImagenes=$(whiptail --inputbox "Ingresar url de imagenes:" 10 60 3>&1 1>&2 2>&3)
+            urlHash=$(whiptail --inputbox "Ingresar url de hash:" 10 60 3>&1 1>&2 2>&3)
+	    eliminar_archivos_carpeta "./../download/archivos"
+            if descargar_imagenes $urlImagenes $urlHash; then
+                eliminar_archivos_carpeta "./../download/imagenes"
+                descomprimir_archivo
+                whiptail --title "Descarga y verificacion finalizada" --msgbox "Se han descargado correctamente las imagenes">
+            else
+                whiptail --title "Descarga y verificacion no finalizada" --msgbox "No se han descargado correctamente las imagenes">
+            fi
+            source menu_seleccion.sh            ;;
         2)
             valor=$(whiptail --inputbox "Cantidad de imágenes a generar:" 10 60 3>&1 1>&2 2>&3)
             if is_number $valor; then
