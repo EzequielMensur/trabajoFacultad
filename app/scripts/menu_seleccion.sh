@@ -21,11 +21,12 @@ mostrar_menu() {
             if descargar_imagenes $urlImagenes $urlHash; then
                 eliminar_archivos_carpeta "./../download/imagenes"
                 descomprimir_archivo
-                whiptail --title "Descarga y verificacion finalizada" --msgbox "Se han descargado correctamente las imagenes">
+                whiptail --title "Descarga y verificacion finalizada" --msgbox "Se han descargado correctamente las imagenes" 10 60
             else
-                whiptail --title "Descarga y verificacion no finalizada" --msgbox "No se han descargado correctamente las imagenes">
+                whiptail --title "Descarga y verificacion no finalizada" --msgbox "No se han descargado correctamente las imagenes" 10 60
             fi
-            source menu_seleccion.sh            ;;
+            source menu_seleccion.sh
+	    ;;
         2)
             valor=$(whiptail --inputbox "Cantidad de imágenes a generar:" 10 60 3>&1 1>&2 2>&3)
             if is_number $valor; then
