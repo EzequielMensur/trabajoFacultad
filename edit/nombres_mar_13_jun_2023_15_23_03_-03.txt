@@ -1,0 +1,3 @@
+Nombres: Pablo_Leandro Sebastián_Agustín Silvana_Yesica
+Total de nombres masculinos: 2
+Total de nombres femeninos: 1

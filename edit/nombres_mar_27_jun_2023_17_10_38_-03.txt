@@ -1,0 +1,3 @@
+Nombres: 
+Total de nombres masculinos: 0
+Total de nombres femeninos: 0
