@@ -1,5 +1,5 @@
 #!/bin/bash
-source "./estado_inicial.sh"
+source "/app/scripts/estado_inicial.sh"
 
 mostrar_menu() {
     opcion=$(whiptail --nocancel --title "Menú" --menu "Elige una opción:" 15 60 4 \
@@ -9,10 +9,10 @@ mostrar_menu() {
 
     case $opcion in
         1)
-            source menu_seleccion.sh
+            source "/app/scripts/menu_seleccion.sh"
             ;;
         2)
-            source menu_procesar.sh
+            source "/app/scripts/menu_procesar.sh"
             ;;
 
         *)

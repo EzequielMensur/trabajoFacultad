@@ -3,7 +3,7 @@
 function generar_imagenes() {
     local cantidad_imagenes="$1"
     local nombres=($(cargar_nombres_memoria))
-    local carpeta_destino="../download/imagenes"
+    local carpeta_destino="app/download/imagenes"
 
     for ((i = 0; i < cantidad_imagenes; i++)); do
         local nombre_imagen=$(generar_nombre_aleatorio "${nombres[@]}")
@@ -23,12 +23,12 @@ function generar_imagenes() {
 }
 function descargar_nombres() {
     local url="https://raw.githubusercontent.com/fernandezpablo85/name_suggestions/master/assets/dict.csv"
-    local archivo_salida="../download/nombre/nombres.txt"
+    local archivo_salida="app/download/nombre/nombres.txt"
     curl -s "$url" | awk -F ',' '{names = names $1 ","} END {sub(/,$/, "", names); print names}' > "$archivo_salida"
 }
 
 function cargar_nombres_memoria() {
-    local archivo_entrada="../download/nombre/nombres.txt"
+    local archivo_entrada="app/download/nombre/nombres.txt"
     local nombres_array=()
     
     while IFS= read -r linea; do

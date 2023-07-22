@@ -1,5 +1,5 @@
 #!/bin/bash
-source ../utils/validaciones.sh
+source app/utils/validaciones.sh
 
 #necesita instalar sudo apt-get install html2ps y modificar las politicas de seguridad <policymap>
 #  <policy domain="coder" rights="read|write" pattern="PS" />
@@ -10,7 +10,7 @@ function redimencionar_imagen(){
      local imagen=$1
      local altura=$2
      local longitud=$3
-     local carpeta_destino="../imagenes_procesadas"
+     local carpeta_destino="app/imagenes_procesadas"
      local nombre_imagen=$(basename "$imagen")
      local imagen_transformada="${carpeta_destino}/${nombre_imagen}"
 
@@ -22,7 +22,7 @@ function redimencionar_imagen(){
 
 function procesar_imagenes(){
 
-     carpeta="./../download/imagenes/"
+     carpeta="app/download/imagenes/"
 
     for archivo in $(find "$carpeta" -type f); do
          redimencionar_imagen $archivo 512 512	

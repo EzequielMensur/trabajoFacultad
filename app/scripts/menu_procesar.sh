@@ -1,8 +1,8 @@
 #!/bin/bash
-source ../utils/validaciones.sh
-source ./procesar.sh
-source ./comprimir.sh
-source ./estado_inicial.sh
+source /app/utils/validaciones.sh
+source /app/scripts/procesar.sh
+source /app/scripts/comprimir.sh
+source /app/scripts/estado_inicial.sh
 
 # Variables globales para ancho y alto
 ancho=512
@@ -34,19 +34,19 @@ mostrar_menu() {
             else
                 whiptail --msgbox --title "Valores no permitidos" --infobox "Valores no permitidos. Deben ser mayores que cero." 8 60
             fi
-            source menu_procesar.sh
+            source "app/scripts/menu_procesar.sh"
             ;;
         2)
-           eliminar_archivos_carpeta "./../imagenes_procesadas/"
+           eliminar_archivos_carpeta "app/imagenes_procesadas/"
            procesar_imagenes
 
-           obtener_nombres_sin_extension "./../imagenes_procesadas/" "./../../edit"
-           comprimir_imagenes "./../imagenes_procesadas/" "./../../edit"
+           obtener_nombres_sin_extension "app/imagenes_procesadas/" "edit/"
+           comprimir_imagenes "app/imagenes_procesadas/" "edit/"
            whiptail --title "Operacion finalizada" --msgbox "Operacion finalizada con exito" 8 60
-           source menu_procesar.sh
+           source "app/scripts/menu_procesar.sh"
            ;;
         3)
-            source menu.sh
+            source "app/scripts/menu.sh"
             ;;
         *)
             whiptail --title "Salir" --msgbox "Saliendo del programa..." 8 60

@@ -1,9 +1,9 @@
 #!/bin/bash 
 
-source ../utils/validaciones.sh
-source ./generar.sh
-source ./descargar.sh
-source ./estado_inicial.sh
+source /app/utils/validaciones.sh
+source /app/scripts/generar.sh
+source /app/scripts/descargar.sh
+source /app/scripts/estado_inicial.sh
 
 mostrar_menu() {
 
@@ -17,10 +17,10 @@ mostrar_menu() {
         1)
            urlImagenes=$(whiptail --inputbox "Ingresar URL de imágenes:" 10 60 3>&1 1>&2 2>&3)
            urlHash=$(whiptail --inputbox "Ingresar URL de hash:" 10 60 3>&1 1>&2 2>&3)
-	   eliminar_archivos_carpeta "./../download/archivos"
+	   eliminar_archivos_carpeta "app/download/archivos"
 
 	   if descargar_imagenes "$urlImagenes" "$urlHash"; then
-    	      eliminar_archivos_carpeta "./../download/imagenes"
+    	      eliminar_archivos_carpeta "app/download/imagenes"
     	      descomprimir_archivo
     	      whiptail --title "Descarga y verificación finalizada" --msgbox "Se han descargado y verificado las imágenes." 10 60
 	   else
@@ -31,16 +31,16 @@ mostrar_menu() {
         2)
             valor=$(whiptail --inputbox "Cantidad de imágenes a generar:" 10 60 3>&1 1>&2 2>&3)
             if is_number $valor; then
-                eliminar_archivos_carpeta "./../download/imagenes"
+                eliminar_archivos_carpeta "app/download/imagenes"
                 generar_imagenes $valor
                 whiptail --title "Generacion finalizada" --msgbox "Se han generado las imagenes correctamente" 10 60
             else
                 whiptail --title "Generacion no finalizada" --msgbox "No se ha podido completar la operacion" 10 60
             fi
-            source menu_seleccion.sh
+            source "app/scripts/menu_seleccion.sh"
             ;;
         3)
-            source menu.sh
+            source "app/scripts/menu.sh"
             ;;
         4)
            whiptail --title "Gracias por usar el programa" --msgbox "Saliendo ..." 10 60 

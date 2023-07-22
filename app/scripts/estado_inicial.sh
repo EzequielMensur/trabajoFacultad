@@ -1,4 +1,4 @@
-source "./generar.sh"
+source "app/scripts/generar.sh"
 
 function eliminar_archivos_carpeta() {
     carpeta=$1
@@ -10,7 +10,7 @@ function eliminar_archivos_carpeta() {
 }
 
 function verificar_archivo_nombres() {
-    archivo="./../download/nombre/nombres.txt"
+    archivo="app/download/nombre/nombres.txt"
 
     if [[ -f "$archivo" ]]; then
         echo "El archivo de nombres existe"
